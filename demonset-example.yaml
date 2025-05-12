@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata: 
+  name: daemon-example-agent
+  namespace: default
+  labels: 
+    k8s-app: daemon-example-agent
+spec: 
+  selector: 
+    matchLabels: 
+      k8s-app: daemon-example-agent
+  template: 
+    metadata:
+      labels: 
+        k8s-app: daemon-example-agent
+  spec:
+    containers:
+    - name: daemon-example-agent
+      image: quay.io/fluentd_elasticsearch/fluentd:v4.5.2
